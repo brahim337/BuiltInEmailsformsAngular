@@ -3,17 +3,59 @@
     <h3>Please type your first email</h3>
     <div class="form-group">
       <label> First Email : </label>
-      <input type="email" class="form-control" formControlName="primaryEmail" />
+      <input
+        [class.is-invalid]="primEmail.invalid && primEmail.touched"
+        type="email"
+        class="form-control"
+        formControlName="primaryEmail"
+      />
+      <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+        <small *ngIf="primEmail.error?.required" class="text-danger">
+          The First email is required
+        </small>
+
+        <small *ngIf="primEmail.error?.pattern" class="text-danger">
+          Please give a valid email
+        </small>
+      </div>
     </div>
 
     <h3>Please type your second email</h3>
+
     <div class="form-group">
       <label> Second Email : </label>
       <input
+        [class.is-invalid]="secondEmail.invalid && secondEmail.touched"
         type="email"
         class="form-control"
         formControlName="secondaryEmail"
       />
+      <div
+        *ngIf="
+          (secondEmail.invalid && secondEmail.touched) || secondEmail.dirty
+        "
+      >
+        <small *ngIf="secondEmail.error?.required === null" class="text-danger">
+          The Seond email is also required
+        </small>
+
+        <small *ngIf="secondEmail.error?.pattern" class="text-danger">
+          Please give a valid email
+        </small>
+      </div>
     </div>
   </form>
 </div>
+
+<!-- <input type="email" class="form-control" formControlName="primaryEmail" /> -->
+
+<!-- without using getter -->
+<!-- <input
+  [class.is-invalid]="
+    userEmails.get('primaryEmail').invalid &&
+    userEmails.get('primaryEmail').touched
+  "
+  type="email"
+  class="form-control"
+  formControlName="primaryemail"
+/> -->
