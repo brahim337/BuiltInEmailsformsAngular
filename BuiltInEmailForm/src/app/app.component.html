@@ -9,12 +9,13 @@
         class="form-control"
         formControlName="primaryEmail"
       />
+
       <div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
-        <small *ngIf="primEmail.error?.required" class="text-danger">
+        <small *ngIf="primEmail.errors?.required" class="text-danger">
           The First email is required
         </small>
 
-        <small *ngIf="primEmail.error?.pattern" class="text-danger">
+        <small *ngIf="primEmail.errors?.pattern" class="text-danger">
           Please give a valid email
         </small>
       </div>
@@ -35,11 +36,11 @@
           (secondEmail.invalid && secondEmail.touched) || secondEmail.dirty
         "
       >
-        <small *ngIf="secondEmail.error?.required === null" class="text-danger">
+        <small *ngIf="secondEmail.errors?.required" class="text-danger">
           The Seond email is also required
         </small>
 
-        <small *ngIf="secondEmail.error?.pattern" class="text-danger">
+        <small *ngIf="secondEmail.errors?.pattern" class="text-danger">
           Please give a valid email
         </small>
       </div>
