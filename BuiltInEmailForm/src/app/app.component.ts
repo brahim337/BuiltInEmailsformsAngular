@@ -9,7 +9,20 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class AppComponent {
   title = "BuiltInEmailForm";
   myRegExpression = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
-
+  usedName = "d";
+  telefon: number;
+  password: string;
+  formSubmitted = false;
+  onSubmit() {
+    if (this.userEmails.valid) {
+      console.log("submitted");
+      this.formSubmitted = true;
+      this.userEmails.reset();
+    } else {
+      alert("the form is not valid");
+      console.log("not submitted");
+    }
+  }
   get primEmail() {
     return this.userEmails.get("primaryEmail");
   }

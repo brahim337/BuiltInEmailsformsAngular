@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form [formGroup]="userEmails">
+  <form [formGroup]="userEmails" (ngSubmit)="onSubmit()">
     <h3>Please fill the follwoing formular</h3>
     <div class="form-group">
       <label> Name: </label>
@@ -8,6 +8,7 @@
         type="text"
         class="form-control"
         formControlName="name"
+        #myname
         required
       />
 
@@ -110,8 +111,19 @@
       </div>
     </div>
 
-    <button type="submit">Confirm</button>
+    <button type="submit" class="btn btn-primary">Confirm</button>
   </form>
+  <div *ngIf="formSubmitted">
+    <br />
+    <br />
+    <h5>Name : {{ userEmails.controls.name.name }}</h5>
+    <!-- <br />
+    <h5>Email : {{}}</h5>
+    <br />
+    <h5>Telefon : {{}}</h5>
+    <br />
+    <h5>Password : {{}}</h5> -->
+  </div>
 </div>
 
 <!-- <input type="email" class="form-control" formControlName="primaryEmail" /> -->
