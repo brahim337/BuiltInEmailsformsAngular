@@ -4,12 +4,22 @@
     <div class="form-group">
       <label> Name: </label>
       <input
-        [class.is-invalid]="true"
+        [class.is-invalid]="userName.invalid && userName.touched"
         type="text"
         class="form-control"
         formControlName="name"
         required
       />
+
+      <div *ngIf="(userName.invalid && userName.touched) || userName.dirty">
+        <small *ngIf="userName.errors?.required" class="text-danger">
+          The name is required
+        </small>
+
+        <small *ngIf="userName.errors?.pattern" class="text-danger">
+          Please give a valid name
+        </small>
+      </div>
 
       <label> First Email : </label>
       <input
@@ -52,21 +62,52 @@
 
       <label> Telefon: </label>
       <input
-        [class.is-invalid]="false"
+        [class.is-invalid]="
+          userTelefonNumber.invalid && userTelefonNumber.touched
+        "
         type="number"
         class="form-control"
         formControlName="telefon"
         required
       />
 
+      <div
+        *ngIf="
+          (userTelefonNumber.invalid && userTelefonNumber.touched) ||
+          userTelefonNumber.dirty
+        "
+      >
+        <small *ngIf="userTelefonNumber.errors?.required" class="text-danger">
+          Telefon number is required
+        </small>
+
+        <small *ngIf="userTelefonNumber.errors?.pattern" class="text-danger">
+          Please give a valid telefon number
+        </small>
+      </div>
+
       <label> Password :</label>
       <input
-        [class.is-invalid]="false"
+        [class.is-invalid]="userPassword.invalid && userPassword.touched"
         type="password"
         class="form-control"
         formControlName="password"
         required
       />
+
+      <div
+        *ngIf="
+          (userPassword.invalid && userPassword.touched) || userPassword.dirty
+        "
+      >
+        <small *ngIf="userPassword.errors?.required" class="text-danger">
+          Password is required
+        </small>
+
+        <small *ngIf="userPassword.errors?.pattern" class="text-danger">
+          Please give a valid password
+        </small>
+      </div>
     </div>
 
     <button type="submit">Confirm</button>

@@ -16,10 +16,21 @@ export class AppComponent {
   get secondEmail() {
     return this.userEmails.get("secondaryEmail");
   }
+
+  get userName() {
+    return this.userEmails.get("name");
+  }
+  get userTelefonNumber() {
+    return this.userEmails.get("telefon");
+  }
+  get userPassword() {
+    return this.userEmails.get("password");
+  }
+
   userEmails = new FormGroup({
     name: new FormControl("", [
       Validators.required,
-      Validators.pattern("^[a-z]")
+      Validators.pattern("[a-z]*")
     ]),
     primaryEmail: new FormControl("", [
       Validators.required,
@@ -33,7 +44,7 @@ export class AppComponent {
       Validators.required,
       Validators.minLength(10),
       Validators.maxLength(10),
-      Validators.pattern("^[0-9]")
+      Validators.pattern("[0-9]*")
     ]),
     password: new FormControl("", [
       Validators.required,
