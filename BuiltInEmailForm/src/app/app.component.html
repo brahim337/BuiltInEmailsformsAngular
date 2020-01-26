@@ -1,7 +1,16 @@
 <div class="container-fluid">
   <form [formGroup]="userEmails">
-    <h3>Please type your first email</h3>
+    <h3>Please fill the follwoing formular</h3>
     <div class="form-group">
+      <label> Name: </label>
+      <input
+        [class.is-invalid]="true"
+        type="text"
+        class="form-control"
+        formControlName="name"
+        required
+      />
+
       <label> First Email : </label>
       <input
         [class.is-invalid]="primEmail.invalid && primEmail.touched"
@@ -19,11 +28,7 @@
           Please give a valid email
         </small>
       </div>
-    </div>
 
-    <h3>Please type your second email</h3>
-
-    <div class="form-group">
       <label> Second Email : </label>
       <input
         [class.is-invalid]="secondEmail.invalid && secondEmail.touched"
@@ -44,7 +49,27 @@
           Please give a valid email
         </small>
       </div>
+
+      <label> Telefon: </label>
+      <input
+        [class.is-invalid]="false"
+        type="number"
+        class="form-control"
+        formControlName="telefon"
+        required
+      />
+
+      <label> Password :</label>
+      <input
+        [class.is-invalid]="false"
+        type="password"
+        class="form-control"
+        formControlName="password"
+        required
+      />
     </div>
+
+    <button type="submit">Confirm</button>
   </form>
 </div>
 

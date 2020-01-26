@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class AppComponent {
   title = "BuiltInEmailForm";
   myRegExpression = "^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
+
   get primEmail() {
     return this.userEmails.get("primaryEmail");
   }
@@ -16,6 +17,10 @@ export class AppComponent {
     return this.userEmails.get("secondaryEmail");
   }
   userEmails = new FormGroup({
+    name: new FormControl("", [
+      Validators.required,
+      Validators.pattern("^[a-z]")
+    ]),
     primaryEmail: new FormControl("", [
       Validators.required,
       Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")
@@ -23,6 +28,16 @@ export class AppComponent {
     secondaryEmail: new FormControl("", [
       Validators.required,
       Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$")
+    ]),
+    telefon: new FormControl("", [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(10),
+      Validators.pattern("^[0-9]")
+    ]),
+    password: new FormControl("", [
+      Validators.required,
+      Validators.minLength(6)
     ])
   });
 }
